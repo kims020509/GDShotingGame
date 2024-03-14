@@ -2,13 +2,19 @@
 
 [ext_resource path="res://Node/Object/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Node/Object/Enemy A.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Node/Object/Bullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Script/GamePlay.gd" type="Script" id=3]
 
 [node name="GamePlay" type="Node2D"]
+script = ExtResource( 3 )
+EnemyASC = ExtResource( 2 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 307, 620 )
-BULLET_SC = ExtResource( 3 )
 
 [node name="Enemy A" parent="." instance=ExtResource( 2 )]
 position = Vector2( 299, 51 )
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
