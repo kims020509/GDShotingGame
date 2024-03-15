@@ -12,8 +12,6 @@ func _ready():
 	create_enemy()
 	pass # Replace with function body.
 
-
-
 func _on_SpawnTimer_timeout():
 	create_enemy()
 	pass # Replace with function body.

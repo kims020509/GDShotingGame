@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Area2D
 
 signal hit(damage)
 
@@ -15,4 +15,4 @@ func _on_hit(damage):
 	HP -= damage
 	if HP <= 0:
 		queue_free()
-		
+

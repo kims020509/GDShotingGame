@@ -1,11 +1,16 @@
 extends KinematicBody2D
 
-export (int) var HP = 5
+signal hp_changed(hp)
+#signal hit(damage)
 
+export (int) var HP = 5
 export (int) var SPEED = 200
 export (PackedScene) var BULLET_SC
 
 var velocity = Vector2()
+
+func _ready():
+	emit_signal("hp_changed", HP)
 
 func _move():
 	velocity = Vector2()
@@ -31,3 +36,8 @@ func _physics_process(_delta):
 
 func _on_ShotTimer_timeout():
 	_shot()
+
+func _on_hit(damage):
+	HP -= damage
+	emit_signal("hp_changed", HP)
+	pass 
