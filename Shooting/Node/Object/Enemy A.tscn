@@ -21,5 +21,6 @@ shape = SubResource( 1 )
 position = Vector2( 4.76837e-07, -1.3411e-06 )
 scale = Vector2( 2.4, 2.4 )
 
+[connection signal="body_entered" from="." to="." method="_on_Enemy_A_body_entered"]
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

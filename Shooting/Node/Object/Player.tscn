@@ -23,4 +23,5 @@ shape = SubResource( 1 )
 wait_time = 0.25
 autostart = true
 
+[connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="timeout" from="ShotTimer" to="." method="_on_ShotTimer_timeout"]
