@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal hp_changed(hp)
 signal hit(damage)
 
-export (int) var HP = 5
+export (int) var HP = 3
 export (int) var SPEED = 200
 export (PackedScene) var BULLET_SC
 

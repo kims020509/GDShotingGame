@@ -1,12 +1,12 @@
 extends Node2D
 
-export (PackedScene) var EnemyASC
+export (PackedScene) var Enemy_ASC
 
 func create_enemy():
-	var enemya = EnemyASC.instance()
-	enemya.position.x = rand_range(0.0, 600.0)
-	enemya.position.y = -50
-	add_child(enemya)
+	var EnemyA = Enemy_ASC.instance()
+	EnemyA.position.x = rand_range(0.0, 600.0)
+	EnemyA.position.y = -50
+	add_child(EnemyA)
 
 func _ready():
 	create_enemy()

@@ -1,14 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Sprite/Airship/Enemy/enemy_A.png" type="Texture" id=1]
-[ext_resource path="res://Script/Enemy A.gd" type="Script" id=2]
+[ext_resource path="res://Sprite/Airship/Satellite/satellite_A.png" type="Texture" id=1]
+[ext_resource path="res://Script/Satellite_A.gd" type="Script" id=2]
+[ext_resource path="res://Node/Object/System/DeadEffect.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Node/Object/Enemy/EBullet.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 24.0208
 
-[node name="Enemy A" type="Area2D"]
-collision_mask = 2
+[node name="Satellite_A" type="Area2D"]
 script = ExtResource( 2 )
+DeadEffect = ExtResource( 3 )
+BULLET_SC = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = -3.14159
@@ -21,6 +24,11 @@ shape = SubResource( 1 )
 position = Vector2( 4.76837e-07, -1.3411e-06 )
 scale = Vector2( 2.4, 2.4 )
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_Enemy_A_body_entered"]
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

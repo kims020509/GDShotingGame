@@ -1,30 +1,40 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Node/Object/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Node/Object/Enemy A.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Node/Object/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Node/Object/Enemy/Satellite_A.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Script/GamePlay.gd" type="Script" id=3]
-[ext_resource path="res://Node/Object/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Node/Object/System/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Background/black.png" type="Texture" id=5]
+[ext_resource path="res://Node/Object/Enemy/Enemy_A.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Node/Object/Pattern/Pattern_1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Node/Object/Player/Side.tscn" type="PackedScene" id=8]
 
 [node name="GamePlay" type="Node2D"]
 script = ExtResource( 3 )
-EnemyASC = ExtResource( 2 )
+Enemy_ASC = ExtResource( 6 )
 
-[node name="SpawnTimer" type="Timer" parent="."]
-autostart = true
-
-[node name="BackGround" type="Sprite" parent="."]
+[node name="BackGround" type="TextureRect" parent="."]
+margin_right = 600.0
+margin_bottom = 860.0
 texture = ExtResource( 5 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 600, 860 )
+expand = true
+stretch_mode = 2
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
 
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Pattern_1" parent="." instance=ExtResource( 7 )]
+
+[node name="Side" parent="." instance=ExtResource( 8 )]
+position = Vector2( 309, 199 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 307, 620 )
+position = Vector2( 186, 611 )
 
 [node name="Enemy A" parent="." instance=ExtResource( 2 )]
-position = Vector2( 299, 51 )
+position = Vector2( 300, 122 )
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
